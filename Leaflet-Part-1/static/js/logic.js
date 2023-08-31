@@ -51,8 +51,8 @@ function createMap(earthquakes){
         attribution: 'Tiles &copy; CartoDB'});
 
     var map = L.map("map", {
-        center: [37.333, -120.523],
-        zoom: 5,
+        center: [32.715736, -117.161087],
+        zoom: 6,
         layers: [streetmap, earthquakes]
     });
 
@@ -69,26 +69,26 @@ function createMap(earthquakes){
     }).addTo(map);
 
     function getColor(mags) {
-        return mags > 90 ? 'darkred':
+        return mags > 90 ? "darkred":
         mags > 70 ? "red":
         mags > 50 ? "orange":
-        mags > 30 ? 'yellow':
-        mags > 10 ? 'lightgreen':
-        'lightblue';
+        mags > 30 ? "yellow":
+        mags > 10 ? "lightgreen":
+        "lightblue";
     }
 
     var legendDisplay = L.control({
         position: "bottomright"
     });
 
-    legendDisplay.onAdd = function(map) {
+    legendDisplay.onAdd = () => {
         var div = L.DomUtil.create("div", "info legend");
         mags = [-10, 10, 30, 50, 70, 90];
-        labels = [];
 
         for (var i=0; i < mags.length; i++) {
-            div.innerHTML += `<i style="background:`+ getColor(mags[i]+1)+`"></i>` + mags[i]+(mags[i+1] ? '&ndash;' +
-            mags[i+1] + '<br>': '+')
+            div.innerHTML += 
+            	'<i style="background:'+ getColor(mags[i]+1)+'"></i>' + 
+              mags[i]+(mags[i+1] ? '&ndash;' + mags[i+1] + '<br>': '+')
         }
         return div;
     };
