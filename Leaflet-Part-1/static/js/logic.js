@@ -51,8 +51,8 @@ function createMap(earthquakes){
         attribution: 'Tiles &copy; CartoDB'});
 
     var map = L.map("map", {
-        center: [32.715736, -117.161087],
-        zoom: 6,
+        center: [45.715736, -117.161087],
+        zoom: 4,
         layers: [streetmap, earthquakes]
     });
 
